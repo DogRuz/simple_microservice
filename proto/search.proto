@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package api;
+
+import "google/api/annotations.proto";
+
+option go_package = "./pkg/api";
+
+service GetInformation {
+  rpc Add(GetInformationRequest) returns (GetInformationResponse) {
+    option (google.api.http) = {
+      get: "/information/v2/{inn}"
+    };
+  }
+}
+
+
+message GetInformationRequest {
+  string inn = 1;
+}
+
+message GetInformationResponse {
+  string inn = 1;
+  string kpp = 2;
+  string fio = 3;
+  string company = 4;
+}
